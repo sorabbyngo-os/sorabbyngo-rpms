@@ -1,0 +1,40 @@
+# RPM build artifacts
+*.rpm
+*.srpm
+*.spec~
+rpmbuild/
+BUILD/
+BUILDROOT/
+RPMS/
+SRPMS/
+SOURCES/
+SPECS/
+
+# Build and temporary output
+build/
+dist/
+tmp/
+*.log
+*.tmp
+
+# Private keys and credentials
+*.key
+*.pem
+*.p12
+*.pfx
+*.asc
+secrets/
+credentials/
+.env
+.env.*
+
+# Editor files
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
