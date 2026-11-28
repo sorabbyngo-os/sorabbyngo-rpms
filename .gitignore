@@ -22,7 +22,6 @@ tmp/
 *.pem
 *.p12
 *.pfx
-*.asc
 secrets/
 credentials/
 .env
@@ -38,3 +37,9 @@ credentials/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Private signing-key storage
+keys/private/
+
+# Private signing-key storage
+config-package/keys/private/

@@ -10,7 +10,7 @@ Our goal is to build a reliable software distribution ecosystem without requirin
 
 - Maintain and distribute first-party Sorabbyngo OS RPM packages.
 - Provide a trusted, signed RPM repository for Sorabbyngo software.
-- Reuse compatible upstream Fedora packages when a package is not available in Sorabbyngo repositories.
+- Reuse compatible packages from explicitly trusted upstream sources when a package is unavailable in Sorabbyngo repositories.
 - Establish consistent packaging, versioning, signing and release standards.
 - Integrate with the Sorabbyngo OS package manager and graphical App Store.
 - Make package distribution reproducible, auditable and maintainable.
@@ -25,11 +25,19 @@ Our goal is to build a reliable software distribution ecosystem without requirin
 
 The App Store is a client of the package-management infrastructure. It is not responsible for hosting or maintaining the RPM repository itself.
 
+## Distribution identity
+
+Sorabbyngo OS maintains its own distribution identity, release lifecycle and architecture targets, independently of developer workstations and build environments.
+
+The canonical distribution ID is `sorabbyngo`. Repository configuration and build tooling must use explicit Sorabbyngo target information rather than deriving product identity from the host system.
+
+See [Distribution Identity](policy/distribution-identity.md).
+
 ## Package-source policy
 
 Sorabbyngo OS will prioritize packages from its own repositories.
 
-When a requested package is unavailable in enabled Sorabbyngo repositories, the package-management system may resolve it from explicitly trusted, compatible Fedora repositories.
+When a requested package is unavailable in enabled Sorabbyngo repositories, the package-management system may resolve it from explicitly trusted upstream repositories with a validated compatibility profile.
 
 The fallback mechanism must:
 
@@ -45,13 +53,15 @@ Upstream fallback is a controlled compatibility mechanism, not unrestricted RPM 
 
 See [Package Source Policy](policy/package-source-policy.md).
 
-## Fedora compatibility
+## Upstream compatibility
 
-Sorabbyngo OS is designed to leverage the Fedora RPM ecosystem where compatibility permits.
+Sorabbyngo OS maintains its own distribution identity, release lifecycle and package-source policies.
 
-Fedora provides a broad package ecosystem, existing build infrastructure and established packaging practices. Sorabbyngo OS can reuse compatible packages while maintaining its own identity, release policies and first-party software.
+The RPM ecosystem provides access to established upstream packaging ecosystems and build practices. Sorabbyngo OS may reuse compatible upstream packages while maintaining independent release policies and first-party software.
 
-Compatibility must be explicitly validated. Package availability upstream does not automatically guarantee suitability for Sorabbyngo OS.
+Upstream distributions are package sources, not Sorabbyngo OS identities. Each source must have an explicitly maintained compatibility profile covering release, architecture, ABI, dependencies and system integration.
+
+Package availability upstream does not automatically guarantee suitability for Sorabbyngo OS.
 
 ## Packaging standards
 
@@ -83,6 +93,15 @@ The repository infrastructure will eventually support:
 - Integration with Sorabbyngo OS package management.
 
 See [Repository Infrastructure](repository/README.md).
+
+## Release engineering
+
+Repository metadata generation, signing, verification and release validation
+are documented in the [Release Process](policy/release-process.md).
+
+The current local tooling supports metadata signing and verification,
+package signature verification and automated regression testing.
+Repository hosting and automated publishing are not yet operational.
 
 ## Development status
 

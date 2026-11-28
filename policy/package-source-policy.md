@@ -4,7 +4,7 @@
 
 Sorabbyngo OS aims to provide a unified software installation experience while maintaining its own software ecosystem.
 
-Sorabbyngo OS will not attempt to independently package every application in the Linux ecosystem. Instead, it will maintain first-party RPM repositories and selectively reuse packages from compatible, trusted Fedora repositories.
+Sorabbyngo OS will not attempt to independently package every application in the Linux ecosystem. Instead, it will maintain first-party RPM repositories and selectively reuse packages from explicitly trusted upstream sources with validated compatibility.
 
 This policy defines package-source precedence and the requirements for upstream fallback.
 
@@ -13,7 +13,7 @@ This policy defines package-source precedence and the requirements for upstream 
 Package resolution should follow this priority:
 
 1. Enabled Sorabbyngo OS repositories.
-2. Explicitly enabled, trusted compatible Fedora repositories.
+2. Explicitly enabled upstream repositories with approved compatibility profiles.
 3. Other sources only when explicitly configured and approved by the system's repository policy.
 
 First-party packages take precedence when they intentionally provide the same package or a compatible replacement.
@@ -22,7 +22,7 @@ The resolver must not silently select an incompatible package simply because it 
 
 ## 3. Upstream fallback
 
-When a package is unavailable in enabled Sorabbyngo repositories, the package manager may search approved Fedora repositories for a compatible package.
+When a package is unavailable in enabled Sorabbyngo repositories, the package manager may search approved upstream repositories for a compatible package.
 
 Fallback must be transparent to the package-management system and must not bypass normal RPM dependency resolution, transaction validation or repository security controls.
 
@@ -44,14 +44,14 @@ Upstream package resolution must:
 
 ## 5. Compatibility requirements
 
-Fedora compatibility is release-specific.
+Upstream compatibility is source-specific and release-specific.
 
-The system must define compatible Fedora release targets and supported architectures rather than assuming all Fedora RPMs are interchangeable.
+Sorabbyngo OS must define supported upstream compatibility profiles and target architectures rather than assuming packages from different distributions or releases are interchangeable.
 
 Compatibility evaluation should consider:
 
 - RPM dependency constraints.
-- Fedora release and package build metadata.
+- Upstream release and package build metadata.
 - Architecture.
 - Core system libraries.
 - System-critical package relationships.

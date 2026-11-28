@@ -1,0 +1,10 @@
+[sorabbyngo-stable]
+name=Sorabbyngo OS - Stable
+baseurl=https://repo.sorabbyngo.org/rpm/stable/releases/$sorabbyngo_releasever/$basearch/
+enabled=1
+type=rpm
+gpgcheck=1
+repo_gpgcheck=1
+skip_if_unavailable=0
+metadata_expire=6h
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-sorabbyngo
